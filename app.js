@@ -83,4 +83,40 @@ function findSum(arr) {
 }
 
 
+//5) Array Addition I
+//Have a function ArrayAdditionI(arr) take the array of numbers stored in arr and return the string true if any combination of numbers in the array (excluding the largest number) can be added up in the largest number in the array, otherwise return the string false. For example: if arr contains  the output should return true because 4 + 6 + 10 + 3 = 23. The array will not be empty, will not contain all the same elements, and may contain negative numbers.
+// console.log(arrayAddition([4, 6, 23, 10, 1, 3]))
+
+function arrayAddition(arr) {
+    //The Math.max() function returns the largest of the numbers given as input parameters.
+    //.apply accepts an array and it applies the array as parameters to the actual function 
+    // (.max Maths doesn't accept an array as input).
+
+    //arrMax-> largest number
+    const arrMax = Math.max.apply(Math, arr)
+    let found = false
+
+
+    function recArrAdd(sub, arr) {
+        if (found) return true
+        if (arr.length > 0) {
+            //The concat() method is used to merge two or more arrays. This method does not change the existing arrays, but instead returns a new array.
+            // The reduce() method executes a user-supplied "reducer" callback function on each element of the array, in order, passing in the return value from the calculation on the preceding element. The final result of running the reducer across all elements of the array is a single value.
+            // console.log(arr[0])
+            let arrSum = sub.concat(arr[0]).reduce((prev, curr) => { return prev + curr;})
+            if (arrSum === arrMax){
+                if (arr[0] != arrMax){
+                    found = true
+                    return found
+                }
+            };
+            recArrAdd(sub.concat(arr[0]), arr.slice(1))
+            recArrAdd(sub, arr.slice(1))
+        }
+        return found
+    }
+
+    return recArrAdd([], arr)
+}
+
 
