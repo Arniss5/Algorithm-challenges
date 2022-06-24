@@ -133,7 +133,7 @@ function arrayAddition(arr) {
 // 2/5 = 0.400000
 // 1/5 = 0.200000
 
-// function getFranctions(arr) {
+// function getFractions(arr) {
 //     let negative = 0
 //     let positive = 0
 //     let zero = 0
@@ -155,17 +155,65 @@ function arrayAddition(arr) {
 //     }
 // }
 
-function getFranctions(arr) {
+function getFractions(arr) {
     const positives = arr.filter(num => num > 0).length
     const negatives = arr.filter(num => num < 0).length
     const zeros = arr.filter(num => num === 0).length
-    const fractions = arr.length
-    const oneFraction = 1 / fractions
 
-    console.log((oneFraction * positives).toFixed(6))
-    console.log((oneFraction * negatives).toFixed(6))
-    console.log((oneFraction * zeros).toFixed(6))
+    console.log((positives / arr.length).toFixed(6))
+    console.log((negatives / arr.length).toFixed(6))
+    console.log((zeros / arr.length).toFixed(6))
 }
 
 
-getFranctions([1,1,3,0,-1,-1])
+
+let personArray = [2, 4, 8, 14, 16, 18];
+
+// sort the array and print the sum of three largest numbers
+// [12,6,4,2,8,10]
+function getThreeLargest(arr) {
+    const sortedArray = arr.sort()
+    console.log(sortedArray[0] + sortedArray[1] + sortedArray[2])
+}
+
+// getThreeLargest([12,6,4,2,8,10])
+
+
+//Given an array of numbers, return how many times the largest number appears in the array. 
+// Example 
+// const arr = [3, 4, 2, 1, 2, 2, 3, 4, 3, 4, 2, 4, 1, 4, 3]
+// Should return 5 as 4 appears 5 times
+
+function countLargest(arr) {
+    let counter = 0
+    const largest = Math.max.apply(Math, arr)
+    arr.forEach(num => {
+        if (num === largest) {
+            counter++
+        }
+    })
+    return counter
+}
+
+// console.log(countLargest([3, 4, 2, 1, 2, 2, 3, 4, 3, 4, 2, 4, 1, 4, 3]))
+
+
+// Given an number n, create a staircase of '#' symbols. The base and height are both equal to n. 
+
+// Write a program that prints out the stair case to the console. 
+
+// Example if n = 4 
+
+//      #
+//     ##
+//   ###
+// ####
+
+function makeStaircase(n) {
+    for(let i = 1; i <= n; i++) {
+        let stair = ' '.repeat(n - i) + '#'.repeat(i)
+        console.log(stair)
+    }
+}
+
+makeStaircase(10)
