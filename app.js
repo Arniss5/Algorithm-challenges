@@ -216,4 +216,32 @@ function makeStaircase(n) {
     }
 }
 
-makeStaircase(10)
+// makeStaircase(10)
+
+
+// 2 people Alice and Bob  get scores for 3 areas. 
+// Take 2 arrays containing 3 numbers. Representing their scores. 
+// For each element in the array. Compare with the same element in the other array. If the value in first array is higher give Alice 1 points, if higher in second array give Bob 1 point. If they are the same. Then no points. 
+// Return an array containing the two scores Alice first then Bob. 
+
+// Example. 
+
+// Arr1 = [4,2,3] 
+// Arr2 = [3,2,1] 
+
+// Should return [1, 1]
+
+function compareScores(arr1, arr2) {
+    let alice = 0
+    let bob = 0
+    for(let i = 0; i < arr1.length; i++) {
+        if (arr1[i] > arr2[i]) {
+            alice++
+        } else if (arr1[i] < arr2[i]) {
+            bob++
+        }
+    }
+    return [alice, bob]
+}
+
+console.log(compareScores([4,2,3], [3,2,1]))
