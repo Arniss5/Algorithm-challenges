@@ -120,3 +120,52 @@ function arrayAddition(arr) {
 }
 
 
+// Given an array on numbers that can be +ve -ve or 0, print out the decimal value of each fraction to 6 DP
+
+// Example [1,1,0,-1,-1] would print out 
+// 0.4
+// 0.4
+// 0.2
+
+// 5 elements. 2 +ve 2-ve and 1 zero. 
+
+// 2/5 = 0.400000
+// 2/5 = 0.400000
+// 1/5 = 0.200000
+
+// function getFranctions(arr) {
+//     let negative = 0
+//     let positive = 0
+//     let zero = 0
+//     arr.forEach(num => {
+//         if (num < 0) {
+//             negative++
+//         } else if (num > 0) {
+//             positive++
+//         } else {
+//             zero++
+//         }
+//     })
+//     const fractions = arr.length
+
+//     console.log(1 / fractions * negative)
+//     console.log(1 / fractions * positive)
+//     if (zero != 0) {
+//         console.log(1 / fractions * zero)
+//     }
+// }
+
+function getFranctions(arr) {
+    const positives = arr.filter(num => num > 0).length
+    const negatives = arr.filter(num => num < 0).length
+    const zeros = arr.filter(num => num === 0).length
+    const fractions = arr.length
+    const oneFraction = 1 / fractions
+
+    console.log((oneFraction * positives).toFixed(6))
+    console.log((oneFraction * negatives).toFixed(6))
+    console.log((oneFraction * zeros).toFixed(6))
+}
+
+
+getFranctions([1,1,3,0,-1,-1])
