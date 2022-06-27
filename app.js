@@ -283,7 +283,38 @@ function findUniqueElement(arr) {
     return "No unique elements"
 }
 
+// console.log(findUniqueElement([1,3,3,4,2,2,1]))
+
+// Given a square matrix, calculate the absolute difference between the sums of its diagonals.
+// For example, the square matrix  is shown below:
+// 1 2 3
+// 4 5 6
+// 9 8 9  
+// The left-to-right diagonal = 1+5+9. The right to left diagonal = 3+5+9. Their absolute difference is 15-17 =2.
+// Return
+// int: the absolute diagonal difference
 
 
-console.log(findUniqueElement([1,3,3,4,2,2,1]))
+const matrix = [
+    [1, 2, 0, 3],
+    [4, 5, 0, 6],
+    [9, 8, 0, 9],
+    [0, 0, 0, 0]
+]
+
+function diagDifference(arr) {
+    const side = arr.length
+    let leftRight = 0
+    let rightLeft = 0
+    
+    for(let i = 0; i < side; i++) {
+        leftRight += arr[i][i]
+        rightLeft += arr[i][side -1 -i]
+    }
+    //Math.abs() returns absolute value of a number
+   return Math.abs(leftRight - rightLeft)
+}
+
+console.log(diagDifference(matrix))
+
 
