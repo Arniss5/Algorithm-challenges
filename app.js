@@ -244,4 +244,46 @@ function compareScores(arr1, arr2) {
     return [alice, bob]
 }
 
-console.log(compareScores([4,2,3], [3,2,1]))
+// console.log(compareScores([4,2,3], [3,2,1]))
+
+// Given an array of integers, where all elements but one occur twice, find the unique element.
+
+// Example
+// arr=[1,2,3,4,3,2,1]
+// The unique element is 4
+// Returns
+
+// int: the element that occurs only once
+
+
+
+// function findUniqueElement(arr) {
+
+//     for(let i = 0; i < arr.length; i++) {
+//         let j
+//         for(j = 0; j < arr.length; j++)
+//             if(i != j && arr[i] === arr[j])
+//                 break  
+//             if (j == arr.length)
+//                 return arr[i]
+//     }
+// }
+function findUniqueElement(arr) {
+    
+    for(let i = 0; i < arr.length; i++) {
+        let j
+        for(j = 0; j < arr.length; j++) {
+            if(i != j && arr[i] === arr[j])
+                break  
+        } 
+        if (j == arr.length){
+            return arr[i]
+        }      
+    }
+    return "No unique elements"
+}
+
+
+
+console.log(findUniqueElement([1,3,3,4,2,2,1]))
+
