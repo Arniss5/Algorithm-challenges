@@ -315,6 +315,57 @@ function diagDifference(arr) {
    return Math.abs(leftRight - rightLeft)
 }
 
-console.log(diagDifference(matrix))
+// console.log(diagDifference(matrix))
 
 
+// Taking a String input, shift the characters in the string by the number of places defined by n. If the shift takes you past the end of the alphabet, then revert back to a. If the character is not a letter. keep it the same as it is. Capitalisation should be kept the same. 
+
+// example String "Always-Look-on-the-Bright-Side-of-Life" and n = 5 should return "Fqbfdx-Qttp-ts-ymj-Gwnlmy-Xnij-tk-Qnkj"
+
+
+function shiftLetters(str, n) {
+    const letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    const capitalLetters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+    const alphabet = letters.length
+    const arr = str.split('')
+    let shiftedStr = ""
+
+    arr.forEach(character => {
+        if (letters.includes(character)) {
+            if (letters.indexOf(character) + n < alphabet) {
+                shiftedStr += letters[letters.indexOf(character) + n]
+            } else {
+                shiftedStr += letters[letters.indexOf(character) + n - alphabet]
+            }
+            
+        } else if (capitalLetters.includes(character)) {
+            if (capitalLetters.indexOf(character) + n < alphabet) {
+                shiftedStr += capitalLetters[capitalLetters.indexOf(character) + n]
+            } else {
+                shiftedStr += capitalLetters[capitalLetters.indexOf(character) + n - alphabet]
+            }
+        } else {
+            shiftedStr += character
+        }
+    })   
+    return shiftedStr 
+}
+
+console.log(shiftLetters("Always-Look-on-the-Bright-Side-of-Life", 5))
+
+
+function CaesarCipher(str, num) {
+    // you can comment this line
+    str = str.toLowerCase();
+
+    var result = '';
+    var charcode = 0;
+
+    for (var i = 0; i < str.length; i++) {
+        charcode = (str[i].charCodeAt()) + num;
+        result += String.fromCharCode(charcode);
+    }
+    return result;
+
+}
+console.log(CaesarCipher("Always-Look-on-the-Bright-Side-of-Life", 5));
